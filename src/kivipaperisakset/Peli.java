@@ -81,7 +81,7 @@ public class Peli {
      * @return Palauttaa true, jos pelin tulee jatkua. Muuten false.
      */
     public boolean jatketaankoPelia(int voitot1, int voitot2){
-        peliJatkuu = voitot1 <= maxVoitot && voitot2 <= maxVoitot;
+        peliJatkuu = voitot1 < maxVoitot && voitot2 < maxVoitot;
         return peliJatkuu;
     }
 
