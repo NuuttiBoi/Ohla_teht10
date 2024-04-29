@@ -1,37 +1,75 @@
 package kivipaperisakset;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-/*
-* Peli - luokan testaaminen.
+/**
+ * Testiluokka Peli-luokalle.
+ * @author Nuutti Turunen
  */
 public class PeliTest {
+
+    private Pelaaja pelaaja1;
+    private Pelaaja pelaaja2;
+    private Peli peli;
+
+
+    @BeforeEach
+    public void setup() {
+        pelaaja1 = new Pelaaja();
+        pelaaja2 = new Pelaaja();
+        peli = new Peli();
+    }
+
     @Test
-    public void aloitePeliTest (){
-        Peli peli = new Peli();
-        Pelaaja p1 = peli.getP1();
-        Pelaaja p2 = peli.getP2();
+    public void testPelaaja1Wins() {
+        pelaaja1.setValinta("kivi");
+        pelaaja2.setValinta("sakset");
 
-        // Jos pelaaja1 saa kiven ja pelaaja2 sakset, niin pelaajan1 tulisi voittaa.
-        if(p1.pelaajanValinta().equals("kivi") && p2.pelaajanValinta().equals("sakset")){
-            assertEquals("Pelaaja 1 voittaa", peli.getTulos(), "Tarkista pelin logiikan toimivuus");
-        }
+        // Simulate game outcome
+        peli.tarkastaTulos(pelaaja1.getValinta(), pelaaja2.getValinta());
+        assertEquals("Pelaaja 1 voittaa", peli.getTulos());
+    }
 
-        // Jos pelaaja1 saa paperin ja pelaaja2 sakset, niin pelaajan2 tulisi voittaa.
-        if(p1.pelaajanValinta().equals("paperi") && p1.pelaajanValinta().equals("sakset")){
-            assertEquals("Pelaaja 2 voittaa", peli.getTulos(), "Tarkista pelin logiikan toimivuus");
-        }
+    @Test
+    public void testPelaaja2Wins() {
 
-        // Jos pelaaja1 saa paperin ja pelaaja2 kiven, niin pelaajan1 tulisi voittaa.
-        if(p1.pelaajanValinta().equals("kivi") && p1.pelaajanValinta().equals("sakset")){
-            assertEquals("Pelaaja 1 voittaa", peli.getTulos(), "Tarkista pelin logiikan toimivuus");
-        }
+        pelaaja1.setValinta("kivi");
+        pelaaja2.setValinta("paperi");
 
-        // Jos jompikumpi pelaajista on saavuttanut kolme voittoa, niin pelin ei tulisi jatkua.
-        if(peli.getP1Voitot() >= 3 || peli.getP2Voitot() >= 3){
-            assertFalse(peli.peliJatkuu);
-        }
 
+        // Simulate game outcome
+        peli.tarkastaTulos(pelaaja1.getValinta(), pelaaja2.getValinta());
+        assertEquals("Pelaaja 2 voittaa", peli.getTulos());
+    }
+
+    @Test
+    public void testTasapeli() {
+        pelaaja1.setValinta("kivi");
+        pelaaja2.setValinta("kivi");
+
+        // Simulate game outcome
+        peli.tarkastaTulos(pelaaja1.getValinta(), pelaaja2.getValinta());
+        assertEquals("Tasapeli", peli.getTulos());
+    }
+
+    @Test
+    public void testGameEnds() {
+        pelaaja1.setVoitot(4);
+        pelaaja2.setVoitot(4);
+        peli.aloitaPeli();
+        peli.jatketaankoPelia(pelaaja1.getVoitot(), pelaaja2.getVoitot());
+        assertFalse(peli.getPeliJatkuu());
+    }
+
+    @Test
+    public void testPeliJatkuu() {
+        pelaaja1.setVoitot(1);
+        pelaaja1.setVoitot(2);
+        peli.jatketaankoPelia(pelaaja1.getVoitot(), pelaaja2.getVoitot());
+        assertTrue(peli.getPeliJatkuu());
     }
 }
+
+

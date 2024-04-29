@@ -5,12 +5,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/*
+/**
+ * @author Nuutti Turunen
 * Testaa Pelaaja - luokan toimivuutta.
  */
 
 public class PelaajaTest {
-    // Pelaajan valinnan tulee olla yksi kolmesta arvosta.
 
     private String valinta;
     @BeforeEach
@@ -18,8 +18,11 @@ public class PelaajaTest {
         Pelaaja pelaaja = new Pelaaja();
         valinta = pelaaja.pelaajanValinta();
     }
+    /**
+     * Testaa, toimiiko pelaajan liikkeen valinta.
+     */
     @Test
-    public void testAdd() {
+    public void testPelaajanValinta() {
         assertTrue(valinta.equals("kivi") || valinta.equals("paperi") || valinta.equals("sakset"));
     }
 }
