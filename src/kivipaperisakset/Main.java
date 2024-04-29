@@ -1,8 +1,9 @@
 package kivipaperisakset;
 
 /**
+ * Main-luokka. Koodi käynnistetään täältä.
 *@author Nuutti Turunen
-* Pääluokka
+*
  */
 public class Main {
     /**

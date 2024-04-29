@@ -1,7 +1,7 @@
 package kivipaperisakset;
 
 /**
- *
+ * Pelin luominen tapahtuu tässä luokassa.
  * @author Ira Dook, muokannut Nuutti Turunen
  */
 public class Peli {

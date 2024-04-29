@@ -6,8 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
+ * Testaa Pelaaja - luokan toimivuutta.
  * @author Nuutti Turunen
-* Testaa Pelaaja - luokan toimivuutta.
+*
  */
 
 public class PelaajaTest {

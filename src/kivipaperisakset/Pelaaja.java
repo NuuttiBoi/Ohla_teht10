@@ -5,7 +5,7 @@ package kivipaperisakset;
 import java.util.Random;
 
 /**
- *
+ * Pelaaja-olion luominen.
  * @author Ira Dook, muokannut Nuutti Turunen
  */
 public class Pelaaja {
@@ -22,9 +22,9 @@ public class Pelaaja {
     }
 
     /**
-     * Gets the player's move.
+     * Hakee pelaajan valitseman liikkeen.
      *
-     * @return The player's selected move (rock, paper, or scissors).
+     * @return Palauttaa tämän liikkeen.
      */
     public String getValinta(){
         return valinta;
