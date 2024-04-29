@@ -3,7 +3,9 @@ package kivipaperisakset;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/*
+* Peli - luokan testaaminen.
+ */
 public class PeliTest {
     @Test
     public void aloitePeliTest (){

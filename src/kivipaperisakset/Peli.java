@@ -2,7 +2,7 @@ package kivipaperisakset;
 
 /**
  *
- * @author Ira Dook
+ * @author Ira Dook, modified by Nuutti Turunen
  */
 public class Peli {
     int pelatutPelit = 0;           // Pelattujen pelien lkm
@@ -12,24 +12,31 @@ public class Peli {
 
     int maxVoitot = 3;     // maksimivoittojen lukumäärä
 
+
     String p1Valinta;
     String p2Valinta;
     String tulos;
-    Pelaaja p1 = new Pelaaja();    // Pelaajaoliot
-    Pelaaja p2 = new Pelaaja();
+    Pelaaja p1;
+    Pelaaja p2;
+
     boolean peliJatkuu = true;
+    /*
+    * Peli-luokan konstruktori.
+     */
     public Peli() {
-
-
-
+        p1 = new Pelaaja();    // Pelaajaoliot
+        p2 = new Pelaaja();
     }
 
-        public void aloitaPeli(){
+    /*
+    * Pelin käynnistys.
+     */
+    public void aloitaPeli(){
         // Aloittaa pelin. Peli jatkuu niin kauan, kunnes jompikumpi pelaajista on saanut kolme voittoa.
-            while((p1.getVoitot() < maxVoitot)&&(p2.getVoitot() < maxVoitot)) {
+            while(peliJatkuu) {
 
                 System.out.println("Erä: "
-                        + (pelatutPelit + 1) + " =====================\n");
+                        + (pelatutPelit++) + " =====================\n");
                 System.out.println("Tasapelien lukumäärä: "
                         + tasapelit + "\n");
                 p1Valinta = p1.pelaajanValinta();
@@ -39,10 +46,6 @@ public class Peli {
                 System.out.println("Pelaaja 2: " + p2Valinta
                         + "\n\t Pelaaja 2:lla koossa " + p2Voitot + " voittoa.");
 
-
-                // Allaolevassa pätkässä on yritetty eri tapoja saada
-                // lukumäärän laskeminen toimimaan oikein.
-                // Ei tää kyllä vieläkään skulaa - KORJAA!
 
                 if ((p1Valinta.equals("kivi")) && (p2Valinta.equals("paperi"))) {
                     tulos=("Pelaaja 2 voittaa");
@@ -87,9 +90,17 @@ public class Peli {
                     tasapelit++;
                     System.out.println("\n\t\t\t Tasapeli \n");
                 }
+                // Tarkastetaan, jatketaanko peliä.
+                if(p1.getVoitot() >= maxVoitot || p2.getVoitot() >= maxVoitot){
+                    peliJatkuu=false;
+
+                }
                 pelatutPelit++;
             }
             System.out.println("KOLME VOITTOA - PELI PÄÄTTYY");
-            peliJatkuu=false;
+            if(p1.getVoitot()>p2.getVoitot()){
+                System.out.println("Voittaja : Pelaaja 1");
+            } else
+                System.out.println("Voittaja : Pelaaja 2");
         }
     }

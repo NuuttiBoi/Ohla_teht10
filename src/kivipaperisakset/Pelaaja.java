@@ -4,7 +4,7 @@ package kivipaperisakset;
 
 /**
  *
- * @author Ira Dook
+ * @author Ira Dook, modified by Nuutti Turunen
  */
 public class Pelaaja {
 

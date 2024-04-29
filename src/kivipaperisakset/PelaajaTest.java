@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 
 public class PelaajaTest {
+    // Pelaajan valinnan tulee olla yksi kolmesta arvosta.
     @Test
     public void testAdd() {
         Pelaaja pelaaja = new Pelaaja();
